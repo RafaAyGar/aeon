@@ -1,11 +1,10 @@
 """Ordinal time series classifiers."""
 
 __all__ = [
-    "OrdinalTDE",
-    "OrdinalRocketClassifier",
     "IndividualOrdinalTDE",
     "histogram_intersection",
-    "InceptionTimeWithROPClassifier",
+    "OrdinalTDE",
+    "OrdinalRocketClassifier",
     "OrdinalInceptionTimeClassifier",
 ]
 
@@ -16,6 +15,5 @@ from aeon.classification.ordinal_classification._ordinal_tde import (
     histogram_intersection,
 )
 from aeon.classification.ordinal_classification.deep_learning import (
-    InceptionTimeWithROPClassifier,
     OrdinalInceptionTimeClassifier,
 )

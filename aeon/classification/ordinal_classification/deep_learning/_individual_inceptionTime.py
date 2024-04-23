@@ -1,6 +1,5 @@
 import gc
 import time
-from copy import deepcopy
 
 from aeon.classification.deep_learning import IndividualInceptionClassifier
 
