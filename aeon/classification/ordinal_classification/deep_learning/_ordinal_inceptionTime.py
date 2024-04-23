@@ -222,17 +222,4 @@ class IndividualOrdinalInceptionClassifier(CustomIndividualInceptionClassifier):
             metrics=metrics,
         )
 
-        if self.callbacks is None:
-            self.callbacks = []
-        if self.reduce_lr_on_plateau:
-            print("Applying ReduceLROnPlateau")
-            if not any(
-                isinstance(callback, tf.keras.callbacks.ReduceLROnPlateau)
-                for callback in self.callbacks
-            ):
-                reduce_lr = tf.keras.callbacks.ReduceLROnPlateau(
-                    monitor="loss", factor=0.5, patience=50, min_lr=0.0001
-                )
-                self.callbacks.append(reduce_lr)
-
         return model

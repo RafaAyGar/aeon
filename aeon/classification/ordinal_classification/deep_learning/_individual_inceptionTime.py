@@ -6,6 +6,7 @@ from aeon.classification.deep_learning import IndividualInceptionClassifier
 
 
 class CustomIndividualInceptionClassifier(IndividualInceptionClassifier):
+
     def _fit(self, X, y):
         """
         Fit the classifier on the training set (X, y).
@@ -50,11 +51,11 @@ class CustomIndividualInceptionClassifier(IndividualInceptionClassifier):
                 tf.keras.callbacks.ReduceLROnPlateau(
                     monitor="loss", factor=0.5, patience=50, min_lr=0.0001
                 ),
-                tf.keras.callbacks.ModelCheckpoint(
-                    filepath=self.file_path + self.file_name_ + ".keras",
-                    monitor="loss",
-                    save_best_only=True,
-                ),
+                # tf.keras.callbacks.ModelCheckpoint(
+                #     filepath=self.file_path + self.file_name_ + ".keras",
+                #     monitor="loss",
+                #     save_best_only=True,
+                # ),
             ]
             if self.callbacks is None
             else self.callbacks
