@@ -39,6 +39,7 @@ __all__ = [
     "load_solar",
     "load_cardano_sentiment",
     "load_covid_3month",
+    "load_atrial_fibrillation",
     # legacy load functions
     "load_from_arff_to_dataframe",
     "load_from_ucr_tsv_to_dataframe",
@@ -71,6 +72,7 @@ from aeon.datasets._single_problem_loaders import (
     load_acsf1,
     load_airline,
     load_arrow_head,
+    load_atrial_fibrillation,
     load_basic_motions,
     load_cardano_sentiment,
     load_covid_3month,
