@@ -1,9 +1,10 @@
 import gc
 
 import numpy as np
-from aeon.classification.deep_learning import InceptionTimeClassifier
-from aeon.classification.ordinal_classification.deep_learning._individual_inceptionTime import (
-    CustomIndividualInceptionClassifier,
+import tensorflow as tf
+from aeon.classification.deep_learning import (
+    InceptionTimeClassifier,
+    IndividualInceptionClassifier,
 )
 from aeon.classification.ordinal_classification.deep_learning._ordinal_activation_layers import (
     CLM,
@@ -124,7 +125,7 @@ class OrdinalInceptionTimeClassifier(InceptionTimeClassifier):
         return self
 
 
-class IndividualOrdinalInceptionClassifier(CustomIndividualInceptionClassifier):
+class IndividualOrdinalInceptionClassifier(IndividualInceptionClassifier):
     def __init__(
         self,
         n_filters=32,
@@ -193,8 +194,8 @@ class IndividualOrdinalInceptionClassifier(CustomIndividualInceptionClassifier):
         )
 
     def build_model(self, input_shape, n_classes, **kwargs):
-        import numpy as np
-        import tensorflow as tf
+
+        print("new")
 
         rng = check_random_state(self.random_state)
         self.random_state_ = rng.randint(0, np.iinfo(np.int32).max)
