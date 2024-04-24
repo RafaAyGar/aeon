@@ -195,8 +195,6 @@ class IndividualOrdinalInceptionClassifier(IndividualInceptionClassifier):
 
     def build_model(self, input_shape, n_classes, **kwargs):
 
-        print("new")
-
         rng = check_random_state(self.random_state)
         self.random_state_ = rng.randint(0, np.iinfo(np.int32).max)
         tf.keras.utils.set_random_seed(self.random_state_)
