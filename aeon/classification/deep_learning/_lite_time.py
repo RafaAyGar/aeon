@@ -9,11 +9,10 @@ import time
 from copy import deepcopy
 
 import numpy as np
-from sklearn.utils import check_random_state
-
 from aeon.classification.base import BaseClassifier
 from aeon.classification.deep_learning.base import BaseDeepClassifier
 from aeon.networks import LITENetwork
+from sklearn.utils import check_random_state
 
 
 class LITETimeClassifier(BaseClassifier):
