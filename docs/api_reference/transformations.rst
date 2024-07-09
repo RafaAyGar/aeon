@@ -46,23 +46,6 @@ Composition
 Pipeline building
 ~~~~~~~~~~~~~~~~~
 
-.. currentmodule:: aeon.transformations.compose
-
-.. autosummary::
-    :toctree: auto_generated/
-    :template: class.rst
-
-    TransformerPipeline
-    FeatureUnion
-    ColumnwiseTransformer
-    ColumnTransformer
-    FitInTransform
-    MultiplexTransformer
-    OptionalPassthrough
-    InvertTransform
-    Id
-    YtoX
-
 .. currentmodule:: aeon.transformations.func_transform
 
 .. autosummary::
@@ -81,15 +64,6 @@ Sklearn and pandas adapters
     :template: class.rst
 
     Tabularizer
-
-.. currentmodule:: aeon.transformations.adapt
-
-.. autosummary::
-    :toctree: auto_generated/
-    :template: class.rst
-
-    TabularToSeriesAdaptor
-    PandasTransformAdaptor
 
 Series-to-tabular transformers
 -------------------------------
@@ -137,10 +111,8 @@ Shapelets, wavelets and convolution
 
     Rocket
     MiniRocket
-    MiniRocketMultivariate
     MiniRocketMultivariateVariable
     MultiRocket
-    MultiRocketMultivariate
 
 .. currentmodule:: aeon.transformations.collection.dwt
 
@@ -284,14 +256,6 @@ Filtering and denoising
 
     BKFilter
 
-.. currentmodule:: aeon.transformations.theta
-
-.. autosummary::
-    :toctree: auto_generated/
-    :template: class.rst
-
-    ThetaLinesTransformer
-
 Slope
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -354,18 +318,6 @@ Seasonality and Date-Time Features
 
     FourierFeatures
 
-Auto-correlation series
-~~~~~~~~~~~~~~~~~~~~~~~
-
-.. currentmodule:: aeon.transformations.acf
-
-.. autosummary::
-    :toctree: auto_generated/
-    :template: class.rst
-
-    AutoCorrelationTransformer
-    PartialAutoCorrelationTransformer
-
 Window-based series transforms
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -411,22 +363,10 @@ These transformers select features in `X` based on `y`.
     :toctree: auto_generated/
     :template: class.rst
 
+    ChannelScorer
     ElbowClassSum
     ElbowClassPairwise
-
-Subsetting time points and variables
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-These transformers subset `X` by time points (`pandas` index or index level) or variables (`pandas` columns).
-
-.. currentmodule:: aeon.transformations.subset
-
-.. autosummary::
-    :toctree: auto_generated/
-    :template: class.rst
-
-    ColumnSelect
-    IndexSubset
+    RandomChannelSelector
 
 Panel transformers
 ------------------
@@ -496,7 +436,7 @@ Outlier detection, changepoint detection
 
     HampelFilter
 
-.. currentmodule:: aeon.transformations.clasp
+.. currentmodule:: aeon.transformations.series._clasp
 
 .. autosummary::
     :toctree: auto_generated/
