@@ -1,6 +1,4 @@
 import math
-import warnings
-
 import numpy as np
 import tensorflow as tf
 from tensorflow_probability import distributions
@@ -18,7 +16,6 @@ class CLM(tf.keras.layers.Layer):
         min_distance=0.35,
         use_slope=False,
         fixed_thresholds=False,
-        clip_warning=True,
         **kwargs,
     ):
         self.num_classes = num_classes
@@ -27,10 +24,7 @@ class CLM(tf.keras.layers.Layer):
         self.min_distance = min_distance
         self.use_slope = use_slope
         self.fixed_thresholds = fixed_thresholds
-        self.clip_warning = clip_warning
         super(CLM, self).__init__(**kwargs)
-
-        self.clip_warning_shown = False
 
     def _convert_thresholds(self, b, a, min_distance=0.35):
         a = tf.pow(a, 2)
@@ -64,15 +58,7 @@ class CLM(tf.keras.layers.Layer):
             tf.reshape(tf.tile(projected, [self.num_classes - 1]), shape=[-1, m])
         )
         z3 = a - b
-        if tf.reduce_any(z3 > 10) or tf.reduce_any(z3 < -10):
-            if self.clip_warning and not self.clip_warning_shown:
-                warnings.warn(
-                    "The output value of the CLM layer is out of the range [-10, 10]."
-                    " Clipping value prior to applying the link function for numerical"
-                    " stability."
-                )
-            z3 = tf.clip_by_value(z3, -10, 10)
-            self.clip_warning_shown = True
+        z3 = tf.clip_by_value(z3, -10, 10)
 
         if self.link_function == "probit":
             a3T = self.dist.cdf(z3)
@@ -105,11 +91,12 @@ class CLM(tf.keras.layers.Layer):
             )
 
         if type(self.use_slope) is bool:
-            self.slope = self.add_weight(
-                name="slope",
-                shape=(1,),
-                initializer=tf.keras.initializers.Constant(100.0),
-            )
+            if self.use_slope:
+                self.slope = self.add_weight(
+                    name="slope",
+                    shape=(1,),
+                    initializer=tf.keras.initializers.Constant(100.0),
+                )
         elif type(self.use_slope) is float:
             self.slope = self.use_slope
         else:
