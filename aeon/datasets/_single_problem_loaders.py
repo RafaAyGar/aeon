@@ -459,7 +459,9 @@ def load_japanese_vowels(split=None, return_X_y=True, return_type="np-list"):
     Number of classes:  9
     Details: http://timeseriesclassification.com/description.php?Dataset=JapaneseVowels
     """
-    return _load_tsc_dataset("JapaneseVowels", split, return_X_y, return_type=return_type)
+    return _load_tsc_dataset(
+        "JapaneseVowels", split, return_X_y, return_type=return_type
+    )
 
 
 # forecasting data sets
@@ -1127,18 +1129,6 @@ def load_cardano_sentiment(split=None, return_X_y=True, return_type="numpy3d"):
     if return_X_y:
         X, y = _load_tsc_dataset(name, split, return_X_y, return_type)
         y = y.astype(float)
-        return X, y
-    else:
-        X = _load_tsc_dataset(name, split, return_X_y, return_type)
-        return X
-
-
-def load_atrial_fibrillation(split=None, return_X_y=True, return_type="numpy3d"):
-    """Load the AtrialFibrillation time series classification problem."""
-    name = "AtrialFibrillation"
-    if return_X_y:
-        X, y = _load_tsc_dataset(name, split, return_X_y, return_type)
-        y = y.astype(int)
         return X, y
     else:
         X = _load_tsc_dataset(name, split, return_X_y, return_type)
